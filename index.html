@@ -1,4 +1,17 @@
 <link rel="stylesheet" href="style.css" src="style.css">
 <script src="breadframe.js"></script>
 
+<script>
+// Call the fetchCode function with the URL and the selector as arguments
+breadframe(url, "script");
+// Get the code content from the element
+var code = element.textContent;
+// Encode the code content as a base64 string
+var base64 = btoa(code);
+// Create a data URI scheme that specifies the script type and the base64 string
+var dataURI = "data:text/javascript;base64," + base64;
+// Use the data URI as the source of the iframe
+<iframe src="dataURI" height="200" width="300" title="JavaScript code"></iframe>
+</script>
+
 <button onclick="breadframe("https://stickman-hook.co/main.html");"><img src="/img/stickman-hook.png" class="smallC"></button>
