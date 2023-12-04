@@ -1,6 +1,10 @@
 .smallC {
   border-radius: 25%;
 }
+a {
+  color:inherit;
+  
+}
 @import url("https://fonts.googleapis.com/css?family=Raleway:400");
 
 * {
