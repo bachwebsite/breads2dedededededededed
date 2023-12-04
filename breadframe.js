@@ -43,4 +43,6 @@ function breadframe(url, selector) {
    var base64 = btoa(code);
     // Create a data URI scheme that specifies the script type and the base64 string
   var dataURI = "data:text/javascript;base64," + base64;
+
+  document.getElementById('myIframe').src=url;
 }
