@@ -33,15 +33,14 @@ body {
 	font-family: Raleway, sans-serif;
 	margin: 0;
 	text-align:center;
-	
 	background-color: rgba(10, 12, 18, 1);
 	color: white;
 	min-height: 100vh;
 	display: flex;
 	flex-wrap: wrap;
-	/*align-items: center;
+	align-items: center;
 	padding: 1rem;
-	justify-content: center;*/
+	justify-content: center;
 }
 
 p {
@@ -63,8 +62,8 @@ p {
 
 .box {
 	font-size: 3vw;
-	/*margin: max(1rem, 3vw);
-	padding: 3vw;*/
+	margin: max(1rem, 3vw);
+	padding: 3vw;
 	border: 0.35rem solid;
 	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
 	animation: borderRotate var(--d) linear infinite forwards;
