@@ -1,7 +1,10 @@
 body {
-  background-image:url("/img/bgbg.png");
+  background-image:url("/img/bgbg.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-attachment: fixed;
-    min-height: 100%;
 }
 
 .smallC {
