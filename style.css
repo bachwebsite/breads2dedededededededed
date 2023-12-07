@@ -1,6 +1,7 @@
 * {
   background-image:url("/img/bgbg.png");
   background-attachment: fixed;
+  min-height: 100%;
 }
 
 .smallC {
