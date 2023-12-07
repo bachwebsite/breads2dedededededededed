@@ -8,9 +8,15 @@
   border:2px solid black;
   border-radius: 30%;
 }
+.smallC:hover {
+  border-radius:69%;
+}
 .largeC {
   width:150px;
   height:150px;
   border:2px solid black;
   border-radius: 30%;
+}
+.largeC:hover {
+  border-radius:69%;
 }
