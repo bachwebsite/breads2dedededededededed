@@ -11,6 +11,7 @@ body {
   border-radius: 30%;
 }
 .smallC:hover {
+  transition:1s;
   border-radius:69%;
 }
 .largeC {
@@ -20,5 +21,6 @@ body {
   border-radius: 30%;
 }
 .largeC:hover {
+  transition:1s;
   border-radius:69%;
 }
