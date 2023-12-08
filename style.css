@@ -10,6 +10,7 @@ body {
 }
 header {
   background: linear-gradient(to right, black, gray);
+  margin-bottom: 10px;
 }
 .smallC {
   width:100px;
