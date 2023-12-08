@@ -8,7 +8,9 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
-
+header {
+  background: linear-gradient(to right, black, gray);
+}
 .smallC {
   width:100px;
   height:100px;
