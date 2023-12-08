@@ -10,6 +10,7 @@ header {
   border:2px solid black;
   background: linear-gradient(to right, black, black, gray);
   margin-bottom: 10px;
+  justify-content: space-around;
 }
 .smallC {
   width:100px;
