@@ -9,6 +9,10 @@ body {
 header {
   display:flex;
   border:2px solid black;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0;
   background: linear-gradient(to right, black, black, gray);
   margin-bottom: 10px;
   justify-content: space-around;
