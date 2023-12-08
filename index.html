@@ -4,6 +4,10 @@
 <header>
         <a href="/"><img src="/img/icon/symbol.png"></a>
         <!--<button onclick="search();" style="border: none; padding: 0; margin: 0; background: none; cursor: pointer;"><img src="/img/icon/search.png"></button>-->
+        <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search...">
+        <i class="search-icon">&#128269;</i>
+        </div>
 </header>
 <!-- HTML !-->
 <div class="container">
@@ -13,8 +17,34 @@
 <button class="button-29" id="pxy" role="button">      PXY                  </button>
 <button class="button-29" id="yt" role="button">       YTubeUnblokker       </button>
 </div>
+
+
+
 <!-- Gameboy Advance-->
 <style>
+        .search-bar {
+            position: relative;
+            display: inline-block;
+            width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            background: linear-gradient(to right, #000, #FFD700); /* Black to Gold gradient */
+            color: #fff;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+            color: #fff;
+        }
 .button-29 {
   align-items: center;
   appearance: none;
