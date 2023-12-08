@@ -4,9 +4,7 @@
 }
 
 body {
-  background-image:url("/img/bgbg.png");
-  background-size: cover;
-  background-attachment: fixed;
+  background: linear-gradient(to right, black, gray);
 }
 header {
   background: linear-gradient(to right, black, gray);
