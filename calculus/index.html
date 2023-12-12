@@ -1,31 +1,43 @@
-<style>
-  #rotateDiv {
-    width: 100px;
-    height: 100px;
-    background-color: #e0e0e0;
-    transition: transform 0.3s ease; /* Add a smooth transition effect */
-  }
-</style>
-
-<script>
-  document.getElementById('rotateDiv').addEventListener('mousedown', function (e) {
-    var startAngle = Math.atan2(e.clientY, e.clientX);
-    
-    function rotateElement(event) {
-      var currentAngle = Math.atan2(event.clientY, event.clientX);
-      var rotateAngle = currentAngle - startAngle;
-
-      document.getElementById('rotateDiv').style.transform = 'rotate(' + rotateAngle + 'rad)';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    #rotateDiv {
+      width: 100px;
+      height: 100px;
+      background-color: #e0e0e0;
+      transition: transform 0.3s ease; /* Add a smooth transition effect */
     }
+  </style>
+</head>
+<body>
 
-    function stopRotation() {
-      document.removeEventListener('mousemove', rotateElement);
-      document.removeEventListener('mouseup', stopRotation);
-    }
+  <div id="rotateDiv"></div>
 
-    document.addEventListener('mousemove', rotateElement);
-    document.addEventListener('mouseup', stopRotation);
-  });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var rotateDiv = document.getElementById('rotateDiv');
 
-<div id="rotateDiv"></div>
+      rotateDiv.addEventListener('mousedown', function (e) {
+        var startAngle = Math.atan2(e.clientY, e.clientX);
+
+        function rotateElement(event) {
+          var currentAngle = Math.atan2(event.clientY, event.clientX);
+          var rotateAngle = currentAngle - startAngle;
+
+          rotateDiv.style.transform = 'rotate(' + rotateAngle + 'rad)';
+        }
+
+        function stopRotation() {
+          document.removeEventListener('mousemove', rotateElement);
+          document.removeEventListener('mouseup', stopRotation);
+        }
+
+        document.addEventListener('mousemove', rotateElement);
+        document.addEventListener('mouseup', stopRotation);
+      });
+    });
+  </script>
+
+</body>
+</html>
