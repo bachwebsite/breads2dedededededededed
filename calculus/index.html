@@ -1,58 +1,112 @@
-<style> 
-   .mover { overflow: hidden; display: block; width: 100%; height: 100%; position: relative; } 
-   .move { position: absolute; width: 150px; height: 20px; left: 20px; top: 20px; background-color: #333; }
-   .movebody { position: absolute; width: 150px; height: 130px; left: 20px; top: 20px; background-color: #222; } 
- </style> 
- <div class="mover"> 
-   <div class="move"></div> 
-   <div class="movebody move"></div> 
- </div> 
- <script> 
-   let moverclass = { 
-     __init: function () { 
-       let elem = document.querySelector('.mover'), 
-           div = document.querySelector('.move'), 
-           oldX = 0, 
-           oldY = 0, 
-           mousedown = false; 
-  
-       function start(e) { 
-         mousedown = true; 
-         let clientX = e.clientX || e.touches[0].clientX; 
-         let clientY = e.clientY || e.touches[0].clientY; 
-         oldX = clientX - div.offsetLeft; 
-         oldY = clientY - div.offsetTop; 
-       } 
-        
-       function end(e) { 
-         mousedown = false; 
-       } 
-        
-       function move(e) { 
-         if (mousedown) { 
-           let clientX = e.clientX || e.touches[0].clientX; 
-           let clientY = e.clientY || e.touches[0].clientY; 
-           let newX = clientX - oldX; 
-           let newY = clientY - oldY; 
-           if (newX >= 0 && newX <= (elem.offsetWidth - div.offsetWidth)) { 
-             div.style.left = newX + 'px'; 
-           } 
-           if (newY >= 0 && newY <= (elem.offsetHeight - div.offsetHeight)) { 
-             div.style.top = newY + 'px'; 
-           } 
-         } 
-       } 
-  
-       div.addEventListener('mousedown', start, false); 
-       div.addEventListener('touchstart', start, false); 
-        
-       window.addEventListener('mouseup', end, false); 
-       window.addEventListener('touchend', end, false); 
-        
-       elem.addEventListener('mousemove', move, false); 
-       elem.addEventListener('touchmove', move, false); 
-     } 
-   }; 
-  
-   moverclass.__init(); 
- </script> 
+<div id="container">
+  <div id="inner"></div>
+</div>
+<style>
+   body {
+  /* Full screen width and height */
+  width: 100%;
+  min-height: 100vh;
+
+  /* Centers the container in the middle of the screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0;
+  background-color: rgb(220, 220, 220);
+}
+
+#container {
+  perspective: 25px;
+}
+
+#inner {
+  width: 20em;
+  height: 18em;
+  background-color: white;
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
+  -moz-transition: transform 0.5s;
+  -o-transition: transform 0.5s;
+}
+</style>
+<script>
+   (function() {
+  // Init
+  var container = document.getElementById("container"),
+    inner = document.getElementById("inner");
+
+  // Mouse
+  var mouse = {
+    _x: 0,
+    _y: 0,
+    x: 0,
+    y: 0,
+    updatePosition: function(event) {
+      var e = event || window.event;
+      this.x = e.clientX - this._x;
+      this.y = (e.clientY - this._y) * -1;
+    },
+    setOrigin: function(e) {
+      this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
+      this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
+    },
+    show: function() {
+      return "(" + this.x + ", " + this.y + ")";
+    }
+  };
+
+  // Track the mouse position relative to the center of the container.
+  mouse.setOrigin(container);
+
+  //-----------------------------------------
+
+  var counter = 0;
+  var updateRate = 10;
+  var isTimeToUpdate = function() {
+    return counter++ % updateRate === 0;
+  };
+
+  //-----------------------------------------
+
+  var onMouseEnterHandler = function(event) {
+    update(event);
+  };
+
+  var onMouseLeaveHandler = function() {
+    inner.style = "";
+  };
+
+  var onMouseMoveHandler = function(event) {
+    if (isTimeToUpdate()) {
+      update(event);
+    }
+  };
+
+  //-----------------------------------------
+
+  var update = function(event) {
+    mouse.updatePosition(event);
+    updateTransformStyle(
+      (mouse.y / inner.offsetHeight / 2).toFixed(2),
+      (mouse.x / inner.offsetWidth / 2).toFixed(2)
+    );
+  };
+
+  var updateTransformStyle = function(x, y) {
+    var style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+    inner.style.transform = style;
+    inner.style.webkitTransform = style;
+    inner.style.mozTransform = style;
+    inner.style.msTransform = style;
+    inner.style.oTransform = style;
+  };
+
+  //-----------------------------------------
+
+  container.onmouseenter = onMouseEnterHandler;
+  container.onmouseleave = onMouseLeaveHandler;
+  container.onmousemove = onMouseMoveHandler;
+})();
+</script>
